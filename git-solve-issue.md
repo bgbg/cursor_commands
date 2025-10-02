@@ -34,6 +34,7 @@ Goal: Analyze a GitHub issue and build a comprehensive plan for implementation, 
    - Create a file `todo__<issue-number>.md` in the same directory as the command is run
    - Present a structured implementation plan with:
      - Overview of the problem
+     - Clarification questions section (Q1, Q2, Q3, etc.) for user responses
      - Task breakdown with clear deliverables
      - File/module changes required
      - Testing strategy
@@ -67,9 +68,10 @@ Goal: Analyze a GitHub issue and build a comprehensive plan for implementation, 
 The command should output a structured plan including:
 1. **Issue Summary**: Brief description of what needs to be implemented
 2. **Requirements Analysis**: Key requirements and acceptance criteria
-3. **Technical Approach**: High-level technical strategy
-4. **Task Breakdown**: Detailed list of implementation tasks
-5. **File Changes**: Expected files/modules to be modified
-6. **Testing Strategy**: How to test the implementation
-7. **Dependencies**: External dependencies or prerequisites
-8. **Risks**: Potential challenges or blockers
+3. **Clarification Questions**: Numbered questions (Q1, Q2, Q3, etc.) for user responses
+4. **Technical Approach**: High-level technical strategy
+5. **Task Breakdown**: Detailed list of implementation tasks
+6. **File Changes**: Expected files/modules to be modified
+7. **Testing Strategy**: How to test the implementation
+8. **Dependencies**: External dependencies or prerequisites
+9. **Risks**: Potential challenges or blockers
