@@ -1,6 +1,6 @@
 # Git Add Commit Push
 
-Goal: Stage changes, generate a commit message, commit, and push for the TechN project.
+Goal: Stage changes, generate a commit message, commit, and push for the current project.
 
 ## Behavior
 1) Handle untracked files:
@@ -32,11 +32,6 @@ Goal: Stage changes, generate a commit message, commit, and push for the TechN p
 ## Performance
 - **Default**: Simple `<type>: <description>` format (fast)
 - **`--detailed`**: Full analysis with body (slower but comprehensive)
-
-## TechN Project Context
-- Focus on RAG chat application changes
-- Consider prompt management, search functionality, web UI components
-- Use appropriate conventional commit types: feat, fix, docs, test, refactor, perf, chore
 
 ## Tools
 - Use only: execute_shell_command, get_project_vcs_status

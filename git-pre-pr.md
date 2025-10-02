@@ -1,6 +1,6 @@
 # Git Pre-PR
 
-Goal: Perform a fast, high-signal self-review of the current branch before opening a PR for the TechN project. Produce actionable improvements, risk callouts, and a concise review report. Do not generate a PR or PR text.
+Goal: Perform a fast, high-signal self-review of the current branch before opening a PR for the project. Produce actionable improvements, risk callouts, and a concise review report. Do not generate a PR or PR text.
 
 ## Behavior
 0) Run unit tests
@@ -57,13 +57,6 @@ Goal: Perform a fast, high-signal self-review of the current branch before openi
 
 ## Optional arguments
 - `--area-threshold <n>`: Flag when more than N top-level areas are touched (default: 8).
-
-## TechN Project Specific Checks
-- Validate prompt YAML files have all required fields (description, input_variables, language, model, temperature, template)
-- Check for proper error handling in RAG pipeline
-- Verify search functionality changes don't break existing queries
-- Ensure web UI changes maintain security (CSRF, auth)
-- Check logging configuration consistency
 
 ## Heuristics
 - If the current branch equals the base branch, abort with a short notice.

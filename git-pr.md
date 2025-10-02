@@ -1,6 +1,6 @@
 # Git PR
 
-Goal: Create a well-formed GitHub Pull Request for the TechN project, ensuring the branch is pushed, metadata is set (title, body, reviewers, labels), and handling forks/drafts intelligently.
+Goal: Create a well-formed GitHub Pull Request for the current project, ensuring the branch is pushed, metadata is set (title, body, reviewers, labels), and handling forks/drafts intelligently.
 
 ## Behavior
 1) Pre-flight
@@ -24,7 +24,6 @@ Goal: Create a well-formed GitHub Pull Request for the TechN project, ensuring t
        - If branch matches `[A-Z]+-\d+`, prefix the title with that key.
    - Generate body:
      - Assemble summary, notable changes, risks, tests, checklist from commit messages and diff stats.
-     - Include TechN-specific context: RAG functionality, prompt management, search improvements, web UI changes.
      - Never include `Signed-off-by` or any signature lines in the PR body.
      - Always mention that this PR closes the issue that was discovered, either explicitly via `--issues` parameter or by inferring from branch name pattern.
 
@@ -40,12 +39,6 @@ Goal: Create a well-formed GitHub Pull Request for the TechN project, ensuring t
 - `--issues "123,456"`: Close these issues (adds `Closes #...` footers). If not provided, the command will try to infer the issues from the branch name.
 - `--no-open`: Do not open PR in browser after creation. (default: open)
 - `--no-copy-url`: Do not copy PR URL to clipboard. (default: copy)
-
-## TechN Project Context
-- Focus on RAG chat application improvements
-- Consider impact on prompt management system
-- Include testing information for search functionality
-- Mention any web UI changes or API modifications
 
 ## Heuristics
 - If an open PR already exists, avoid duplicate creation and exit early.
