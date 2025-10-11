@@ -79,4 +79,4 @@ plan 42 --no-ask-clarifications # skip clarifications
 - Output file is always required in general mode
 - In issue mode: use only git/gh commands, focus on planning not implementation
 - Honor compact output requests while preserving structure
-- Ensure valid Markdown with proper heading hierarchy
+- Ensure valid Markdown with proper heading hierarchy, no bold, italic, underline, emojis unless absolutely necessary.
