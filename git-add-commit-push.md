@@ -12,8 +12,9 @@ Goal: Stage changes, generate a commit message, commit, and push for the current
    - Otherwise: `git add -u`
 
 3) Check branch name for issue reference:
+   - Skip this step if `--no-issue` is set
    - If branch name contains a numbered issue pattern (e.g., `issue-123`, `fix/issue-42`, `123-fix-bug`), extract the issue number
-   - Ask whether to add issue reference to commit message
+   - Ask whether to add issue reference to commit message. Mention: "To skip this check next time, use --no-issue"
    - If user says "close issue <NUMBER>" or similar: add "Closes #<NUMBER>" to commit message
    - If user says "related to issue #<NUMBER>" or similar: add "Related to #<NUMBER>" to commit message
 
@@ -33,7 +34,8 @@ Goal: Stage changes, generate a commit message, commit, and push for the current
 - `--fast`: Generate a simple commit message (faster)
 - `--simple`: If total diff is shorter than 1000 characters, use that to generate a more detailed message
 - `--detailed`: Generate detailed conventional commit (slower)
-- `--confirm` and `--no-confirm` : whether to skip confirmation prompts (DEFAULT: --no-confirm)
+- `--confirm` and `--no-confirm`: whether to skip confirmation prompts (DEFAULT: --no-confirm)
+- `--no-issue`: Skip checking branch name for issue references
 
 ## Performance
 - **Default**: Simple `<type>: <description>` format (fast)
