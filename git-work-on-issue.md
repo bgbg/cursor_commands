@@ -3,14 +3,16 @@
 Goal: Start work on a GitHub issue by creating a properly named branch and annotating the issue for the current project.
 
 ## Behavior
-1) Resolve issue
+1) Fetch issue
    - Accept `--issue <number|url>` or positional `<issue>` as the first non-flag argument. If neither is provided, ask for the issue number.
-   - Fetch repo metadata: `gh repo view --json nameWithOwner,defaultBranchRef`.
-   - Fetch issue metadata using `gh issue view` and verify the issue is open. Abort if closed.
+   - Fetch issue and repo metadata in one call: `gh issue view <issue> --json number,title,state,labels,repository`.
+   - Extract repository info from `repository.nameWithOwner` and `repository.defaultBranchRef.name`.
+   - Verify the issue is open. Abort if closed.
 
 2) Determine base branch
    - Use the repository default branch.
-   - Always `git fetch --prune --tags` and fast-forward the base branch.
+   - Fetch only the base branch: `git fetch origin <base-branch>:<base-branch>`.
+   - Fast-forward the base branch to match remote.
 
 3) Ensure clean working tree
    - If there are uncommitted changes, abort.
@@ -26,13 +28,12 @@ Goal: Start work on a GitHub issue by creating a properly named branch and annot
 5) Create and switch branch
    - If `--tree`: Create git worktree in `.trees/<branch-name>` and work there.
    - Otherwise: `git checkout <base>` then `git pull --ff-only`, then `git checkout -b <derived-branch>`.
-   - Always push and set upstream so links are clickable in GitHub: `git push -u origin <derived-branch>`.
 
-6) Annotate the issue
-   - Comment body (default): `Starting work on this in branch [<derived-branch>](https://github.com/<owner>/<repo>/tree/<derived-branch>).`
-   - Construct `<owner>/<repo>` from `gh repo view --json nameWithOwner`.
+6) Push and annotate
+   - Push upstream: `git push -u origin <derived-branch>` so links are clickable in GitHub.
+   - Comment body: `Starting work on this in branch [<derived-branch>](https://github.com/<owner>/<repo>/tree/<derived-branch>).`
    - Do not include any signature lines (e.g., `Signed-off-by`).
-   - `gh issue comment <issue> --body "<body>"`.
+   - Add comment: `gh issue comment <issue> --body "<body>"`.
 
 7) Output
    - Print the branch name, base, and the clickable URL: `https://github.com/<owner>/<repo>/tree/<branch>`.
@@ -54,6 +55,6 @@ Goal: Start work on a GitHub issue by creating a properly named branch and annot
 - Avoid: web_search, analysis tools, file editing tools
 
 ## Examples
-- `git-work-on-issue 42` → reads issue, creates and pushes `fix/42-login-error` (if labeled `bug`) and comments with a clickable branch link.
+- `git-work-on-issue 42` → reads issue, creates `fix/42-login-error` (if labeled `bug`), pushes, and comments with branch link.
 - `git-work-on-issue --issue 42 --tree` → same as above but creates worktree in `.trees/fix-42-login-error`.
 - `git-work-on-issue https://github.com/<owner>/<repo>/issues/42` → same as first example.
