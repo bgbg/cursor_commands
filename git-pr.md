@@ -14,8 +14,9 @@ Goal: Create a well-formed GitHub Pull Request for the current project, ensuring
    - If upstream exists and branch is behind, warn and suggest `git pull --rebase`.
 
 3) Detect existing PR
-   - Query `gh pr view --json number,state,url,headRefName,baseRefName` for the branch.
-   - If an open PR exists, print URL and exit.
+   - Query `gh pr view --json number,state,url,headRefName,baseRefName,isDraft` for the branch.
+   - If an open PR exists and is not draft, print URL and exit.
+   - If an open PR exists and is draft, note it for later processing and continue to step 4.
 
 4) Title and body generation
    - Generate title:
@@ -33,7 +34,7 @@ Goal: Create a well-formed GitHub Pull Request for the current project, ensuring
    - Open in browser and copy URL to clipboard by default unless disabled by flags below.
 
 6) Post-create actions
-   - None.
+   - If an existing draft PR was detected in step 3, remove draft status with `gh pr ready` and print updated URL.
 
 ## Optional arguments
 - `--issues "123,456"`: Close these issues (adds `Closes #...` footers). If not provided, the command will try to infer the issues from the branch name.

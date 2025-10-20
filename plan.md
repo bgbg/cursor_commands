@@ -43,15 +43,15 @@ Required sections:
 1. **Title**: one-line goal statement
 2. **Issue Summary** (issue mode only): brief description from GitHub issue
 3. **Assumptions**: key assumptions that materially affect scope or design
-4. **Approach**: rationale, alternatives briefly noted
-5. **Steps**: numbered, outcome-focused. For complex tasks, break into sub-issues with "Related to #<ISSUE_NUMBER>" (replaced after GitHub creation)
+4. **Open Questions**: Think hard about what's unclear or ambiguous. Numbered questions (Q1, Q2, ...) with answer placeholders (A1: ..., A2: ...) for user to fill in. You may provide several options for the user to choose from, or leave "..." if you can't think of any. If no questions after careful consideration, write "No questions".
+5. **Approach**: rationale, alternatives briefly noted
+6. **Steps**: Think hard and produce numbered, outcome-focused. For complex tasks, break into sub-issues. If issue number is known, add "Related to #<ISSUE_NUMBER>" line at the end of each step.
 
 Optional sections (add only if they reduce ambiguity or risk):
-6. **Scope and Non-Goals**: inclusions and explicit exclusions
-7. **Requirements and Constraints**: functional, performance, security, compatibility
-8. **Risks & Mitigations**: top risks with practical mitigations
-9. **Dependencies**: code, data, services; note ownership/availability
-10. **Open Questions**: Numbered questions (Q1, Q2, ...) with answer placeholders (A1: ..., A2: ...) for user to fill in.
+7. **Scope and Non-Goals**: inclusions and explicit exclusions
+8. **Requirements and Constraints**: functional, performance, security, compatibility
+9. **Risks & Mitigations**: top risks with practical mitigations
+10. **Dependencies**: code, data, services; note ownership/availability
 11. **Verification & Acceptance Criteria**: tests, success metrics
 12. **Deliverables**: artifacts to produce
 13. **Rollout & Backout**: release steps, monitoring, rollback
