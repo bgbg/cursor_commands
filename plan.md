@@ -43,7 +43,7 @@ Required sections:
 1. **Title**: one-line goal statement
 2. **Issue Summary** (issue mode only): brief description from GitHub issue
 3. **Assumptions**: key assumptions that materially affect scope or design
-4. **Open Questions**: Think hard about what's unclear or ambiguous. Numbered questions (Q1, Q2, ...) with answer placeholders (A1: ..., A2: ...) for user to fill in. You may provide several options for the user to choose from, or leave "..." if you can't think of any. If no questions after careful consideration, write "No questions".
+4. **Open Questions**: Think hard about what's unclear or ambiguous. Numbered questions (Q1, Q2, ...). For each question provide up to three possible reasonable answers (A, B, C). It's OK not to ask anything. If no questions after careful consideration, write "No questions".
 5. **Approach**: rationale, alternatives briefly noted
 6. **Steps**: Think hard and produce numbered, outcome-focused. For complex tasks, break into sub-issues. If issue number is known, add "Related to #<ISSUE_NUMBER>" line at the end of each step.
 
