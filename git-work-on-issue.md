@@ -26,7 +26,7 @@ Goal: Start work on a GitHub issue by creating a properly named branch and annot
    - `description` derives from the issue title or manual prompt. Sanitize to kebab-case, ASCII, max length 48.
 
 5) Create and switch branch
-   - If `--tree`: Create git worktree in `.trees/<branch-name>` and work there.
+   - If `--tree`: Create git worktree in `.trees/<issue-number>-<type>-<kebab-description>` and work there.
    - Otherwise: `git checkout <base>` then `git pull --ff-only`, then `git checkout -b <derived-branch>`.
 
 6) Push and annotate
@@ -37,12 +37,12 @@ Goal: Start work on a GitHub issue by creating a properly named branch and annot
 
 7) Output
    - Print the branch name, base, and the clickable URL: `https://github.com/<owner>/<repo>/tree/<branch>`.
-   - If `--tree`: Print the worktree location: `.trees/<branch-name>`.
+   - If `--tree`: Print the worktree location: `.trees/<issue-number>-<type>-<kebab-description>`.
 
 ## Arguments
 - `--issue <number|url>`: Target issue identifier (flag form).
 - `<issue>`: Positional target issue identifier (number or GitHub issue URL).
-- `--tree`: Create branch in git worktree at `.trees/<branch-name>`.
+- `--tree`: Create branch in git worktree at `.trees/<issue-number>-<type>-<kebab-description>`.
 
 ## Heuristics
 - If the issue title starts with a ticket key like `ABC-123:`, strip the prefix and use the remainder for the slug, but keep the numeric GitHub issue id in the branch name.
@@ -56,5 +56,5 @@ Goal: Start work on a GitHub issue by creating a properly named branch and annot
 
 ## Examples
 - `git-work-on-issue 42` → reads issue, creates `fix/42-login-error` (if labeled `bug`), pushes, and comments with branch link.
-- `git-work-on-issue --issue 42 --tree` → same as above but creates worktree in `.trees/fix-42-login-error`.
+- `git-work-on-issue --issue 42 --tree` → same as above but creates worktree in `.trees/4-feature-enhance-documentcollection-load-method`.
 - `git-work-on-issue https://github.com/<owner>/<repo>/issues/42` → same as first example.

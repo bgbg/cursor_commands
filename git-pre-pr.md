@@ -3,7 +3,7 @@
 Goal: Perform a fast, high-signal self-review of the current branch before opening a PR for the project. Produce actionable improvements, risk callouts, and a concise review report. Do not generate a PR or PR text.
 
 ## Behavior
-0) Run unit tests
+0) Run unit tests (skip if `--no-tests` is provided)
    - Run pytest tests: `python -m pytest tests/ -v`
    - If tests fail, abort with a short notice that specifies which tests failed.
 
@@ -57,6 +57,7 @@ Goal: Perform a fast, high-signal self-review of the current branch before openi
 
 ## Optional arguments
 - `--area-threshold <n>`: Flag when more than N top-level areas are touched (default: 8).
+- `--no-tests`: Skip running unit tests and assume all tests pass.
 
 ## Heuristics
 - If the current branch equals the base branch, abort with a short notice.

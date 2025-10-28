@@ -25,8 +25,11 @@ Goal: Create a well-formed GitHub Pull Request for the current project, ensuring
        - If branch matches `[A-Z]+-\d+`, prefix the title with that key.
    - Generate body:
      - Assemble summary, notable changes, risks, tests, checklist from commit messages and diff stats.
-     - Never include `Signed-off-by` or any signature lines in the PR body.
-     - Always mention that this PR closes the issue that was discovered, either explicitly via `--issues` parameter or by inferring from branch name pattern.
+     - Never include emojis or `Signed-off-by` or any signature lines in the PR body.
+     - **CRITICAL - Issue linking**: The PR body MUST include `Closes #<issue-number>` footer:
+       - If `--issues` parameter provided: add `Closes #<number>` for each issue
+       - Otherwise, infer issue number from branch name (e.g., `feature/ABC-123` → `Closes #123`)
+       - If no issue number can be determined, ask user whether to proceed without issue link
 
 5) Create PR
    - Execute `gh pr create` with generated `--title` and `--body`. Base is the repo default; set `--head` for forks if needed.
@@ -37,7 +40,7 @@ Goal: Create a well-formed GitHub Pull Request for the current project, ensuring
    - If an existing draft PR was detected in step 3, remove draft status with `gh pr ready` and print updated URL.
 
 ## Optional arguments
-- `--issues "123,456"`: Close these issues (adds `Closes #...` footers). If not provided, the command will try to infer the issues from the branch name.
+- `--issues "123,456"`: Explicitly specify issue numbers to close (adds `Closes #<number>` footers to PR body). If not provided, the command will try to infer the issue number from the branch name pattern (e.g., `feature/123-add-auth` → issue #123).
 - `--no-open`: Do not open PR in browser after creation. (default: open)
 - `--no-copy-url`: Do not copy PR URL to clipboard. (default: copy)
 

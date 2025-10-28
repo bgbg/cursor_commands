@@ -11,13 +11,13 @@ If `--from-issue <number|url>` is provided:
 3. Analyze issue content: title, description, comments, dependencies, affected components
 4. If `--ask-clarifications` (default): ask clarifying questions if needed, comment them on the issue
 5. Generate plan following Plan Structure below
-6. Write to `todo__<issue-number>.md`
+6. **CRITICAL**: Use Write tool to create file `todo__<issue-number>.md` with complete plan content. File path must be absolute. Never skip this step.
 
 Otherwise (general planning):
 1. First argument must be the output file path
 2. Use entire project as context
 3. Generate plan following Plan Structure below
-4. Write to the specified file (overwrite if exists)
+4. **CRITICAL**: Use Write tool to create the specified output file with complete plan content. File path must be absolute. Never skip this step.
 
 **Sub-issue creation**: After generating plan, if Steps section includes sub-issues, ask user to create them on GitHub. If confirmed, run `gh issue create` for each and update plan file with actual issue numbers (replacing `#<ISSUE_NUMBER>` placeholders).
 
@@ -74,6 +74,14 @@ plan --from-issue 42            # writes to todo__42.md
 plan 42                         # same (positional)
 plan 42 --no-ask-clarifications # skip clarifications
 ```
+
+## File Writing Requirements
+**MANDATORY**: Every execution must end with Write tool call:
+- Issue mode: Write to `todo__<issue-number>.md` in current directory
+- General mode: Write to specified output file path
+- Use absolute paths (resolve relative paths to absolute)
+- Overwrite existing files without asking
+- Confirm file creation by showing file path to user
 
 ## Notes
 - Output file is always required in general mode
